@@ -1,0 +1,93 @@
+<html lang="ja">
+<head>
+  <meta http-equiv="content-type" charset="utf-8">
+  <title>rm max calc</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<div id="app">
+  <p>Max Weight算出用</p>
+  <p>標準：使用Weight * (1 + ((レップ数 - 1) / 21)) ＝ MaxWeight</p>
+  <p>{{weight}} * (1 + (({{reps}} - 1) / {{k}})) ＝</p>
+  <p>{{Math.round(weight * (1 + ((reps - 1) / k)) * 100) / 100}}</p>
+  <p>
+  <p>
+    weight: <input v-model="weight">
+    reps: <input v-model="reps">
+    k: <input v-model="k">
+  </p>
+  <p>
+    <button @click="persist">Save</button>
+  </p>
+</div>
+<script>
+const app = new Vue({
+  el: '#app',
+  data: {
+    weight: 60,
+    reps: 8,
+    k: 21
+  },
+  mounted() {
+    if (localStorage.weight) {
+      this.weight = localStorage.weight;
+    }
+    if (localStorage.reps) {
+      this.reps = localStorage.reps;
+    }
+    if (localStorage.k) {
+      this.k = localStorage.k;
+    }
+  },
+  methods: {
+    persist() {
+      localStorage.weight = this.weight;
+      localStorage.reps = this.reps;
+      localStorage.k = this.k;
+    }
+  }
+})
+</script>
+<hr/>
+<div id="app-7" class="demo">
+  <p>使用Weght算出用</p>
+  <p>標準：MaxWeight / (1 + ((レップ数 - 1) / 21)) = 使用Weight</p>
+  <p>{{max}} / (1 + (({{reps}} - 1) / {{k}})) ＝</p>
+  <p>{{Math.round(max / (1 + ((reps - 1) / k)) * 100) / 100}}</p>
+  max: <input v-model="max">
+  reps: <input v-model="reps">
+  k: <input v-model="k">
+  <p>
+    <button @click="persist">Save</button>
+  </p>
+</div>
+<script>
+var app7 = new Vue({
+  el: '#app-7',
+  data: {
+    max: '80',
+    reps: '8',
+    k: '21',
+  },
+  mounted() {
+    if (localStorage.max) {
+      this.max = localStorage.max;
+    }
+    if (localStorage.reps2) {
+      this.reps = localStorage.reps2;
+    }
+    if (localStorage.k2) {
+      this.k = localStorage.k2;
+    }
+  },
+  methods: {
+    persist() {
+      localStorage.max = this.max;
+      localStorage.reps2 = this.reps;
+      localStorage.k2 = this.k;
+    }
+  }
+})
+</script>
+</body>
+</html>
