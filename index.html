@@ -163,19 +163,19 @@ const app = new Vue({
     },
     myRound(tm, k, round) {
       if (round == "2.5 round") {
-        return Math.round(tm * k / 2.5) * 2.5
+        return Math.round(tm * k / 2.5) * 2.5;
       } else if (round == "2.5 roundUp") {
-        return Math.ceil(tm * k / 2.5) * 2.5
+        return Math.ceil(tm * k / 2.5) * 2.5;
       } else if (round == "2.5 roundDown") {
-        return Math.floor(tm * k / 2.5) * 2.5
+        return Math.floor(tm * k / 2.5) * 2.5;
       } else if (round == "5 round") {
-        return Math.round(tm * k / 5) * 5
+        return Math.round(tm * k / 5) * 5;
       } else if (round == "5 roundUp") {
-        return Math.ceil(tm * k / 5) * 5
+        return Math.ceil(tm * k / 5) * 5;
       } else if (round == "5 roundDown") {
-        return Math.floor(tm * k / 5) * 5
+        return Math.floor(tm * k / 5) * 5;
       } else {
-        return Math.round(tm * k * 100) / 100
+        return Math.round(tm * k * 100) / 100;
       }
     }
   }
