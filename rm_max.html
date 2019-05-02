@@ -7,14 +7,23 @@
 <body>
 <div id="app">
   <p>Max Weight算出用</p>
-  <p>標準：使用Weight * (1 + ((レップ数 - 1) / 21)) ＝ MaxWeight</p>
-  <p>{{weight}} * (1 + (({{reps}} - 1) / {{k}})) ＝</p>
-  <p>{{Math.round(weight * (1 + ((reps - 1) / k)) * 100) / 100}}</p>
-  <p>
+  <p>標準：使用Weight * (1 + ((Reps - 1) / 21)) ＝ MaxWeight</p>
+  <p>{{weight}} * (1 + (({{reps}} - 1) / {{k}})) =</p>
+  <p>{{Math.round(weight * (1 + ((reps - 1) / k)) * 100) / 100}} ≒
+  {{myRound(weight, reps, k, round)}}</p>
   <p>
     weight: <input v-model="weight">
     reps: <input v-model="reps">
     k: <input v-model="k">
+    <select v-model="round">
+      <option>none</option>
+      <option>2.5 round</option>
+      <option>2.5 roundUp</option>
+      <option>2.5 roundDown</option>
+      <option>5 round</option>
+      <option>5 roundUp</option>
+      <option>5 roundDown</option>
+    </select>
   </p>
   <p>
     <button @click="persist">Save</button>
@@ -26,7 +35,8 @@ const app = new Vue({
   data: {
     weight: 60,
     reps: 8,
-    k: 21
+    k: 21,
+    round: "none"
   },
   mounted() {
     if (localStorage.weight) {
@@ -38,36 +48,71 @@ const app = new Vue({
     if (localStorage.k) {
       this.k = localStorage.k;
     }
+    if (localStorage.round) {
+      this.round = localStorage.round;
+    }
   },
   methods: {
     persist() {
       localStorage.weight = this.weight;
       localStorage.reps = this.reps;
       localStorage.k = this.k;
+      localStorage.round = this.round;
+    },
+    hoge() {
+      return 1;
+    },
+    myRound(weight, reps, k, round) {
+      if (round == "2.5 round") {
+        return Math.round(weight * (1 + ((reps - 1) / k)) / 2.5) * 2.5
+      } else if (round == "2.5 roundUp") {
+        return Math.ceil(weight * (1 + ((reps - 1) / k)) / 2.5) * 2.5
+      } else if (round == "2.5 roundDown") {
+        return Math.floor(weight * (1 + ((reps - 1) / k)) / 2.5) * 2.5
+      } else if (round == "5 round") {
+        return Math.round(weight * (1 + ((reps - 1) / k)) / 5) * 5
+      } else if (round == "5 roundUp") {
+        return Math.ceil(weight * (1 + ((reps - 1) / k)) / 5) * 5
+      } else if (round == "5 roundDown") {
+        return Math.floor(weight * (1 + ((reps - 1) / k)) / 5) * 5
+      } else {
+        return Math.round(weight * (1 + ((reps - 1) / k)) * 100) / 100
+      }
     }
-  }
+  },
 })
 </script>
 <hr/>
-<div id="app-7" class="demo">
+<div id="app-2" class="demo">
   <p>使用Weght算出用</p>
-  <p>標準：MaxWeight / (1 + ((レップ数 - 1) / 21)) = 使用Weight</p>
-  <p>{{max}} / (1 + (({{reps}} - 1) / {{k}})) ＝</p>
-  <p>{{Math.round(max / (1 + ((reps - 1) / k)) * 100) / 100}}</p>
+  <p>標準：MaxWeight / (1 + ((Reps - 1) / 21)) = 使用Weight</p>
+  <p>{{max}} / (1 + (({{reps}} - 1) / {{k}})) =</p>
+  <p>{{Math.round(max / (1 + ((reps - 1) / k)) * 100) / 100}} ≒
+  {{myRound(max, reps, k, round)}}</p>
   max: <input v-model="max">
   reps: <input v-model="reps">
   k: <input v-model="k">
+  <select v-model="round">
+    <option>none</option>
+    <option>2.5 round</option>
+    <option>2.5 roundUp</option>
+    <option>2.5 roundDown</option>
+    <option>5 round</option>
+    <option>5 roundUp</option>
+    <option>5 roundDown</option>
+  </select>
   <p>
     <button @click="persist">Save</button>
   </p>
 </div>
 <script>
-var app7 = new Vue({
-  el: '#app-7',
+var app2 = new Vue({
+  el: '#app-2',
   data: {
     max: '80',
     reps: '8',
     k: '21',
+    round: 'none',
   },
   mounted() {
     if (localStorage.max) {
@@ -79,12 +124,101 @@ var app7 = new Vue({
     if (localStorage.k2) {
       this.k = localStorage.k2;
     }
+    if (localStorage.round2) {
+      this.round = localStorage.round2;
+    }
   },
   methods: {
     persist() {
       localStorage.max = this.max;
       localStorage.reps2 = this.reps;
       localStorage.k2 = this.k;
+      localStorage.round2 = this.round;
+    },
+    myRound(max, reps, k, round) {
+      if (round == "2.5 round") {
+        return Math.round(max / (1 + ((reps - 1) / k)) / 2.5) * 2.5
+      } else if (round == "2.5 roundUp") {
+        return Math.ceil(max / (1 + ((reps - 1) / k)) / 2.5) * 2.5
+      } else if (round == "2.5 roundDown") {
+        return Math.floor(max / (1 + ((reps - 1) / k)) / 2.5) * 2.5
+      } else if (round == "5 round") {
+        return Math.round(max / (1 + ((reps - 1) / k)) / 5) * 5
+      } else if (round == "5 roundUp") {
+        return Math.ceil(max / (1 + ((reps - 1) / k)) / 5) * 5
+      } else if (round == "5 roundDown") {
+        return Math.floor(max / (1 + ((reps - 1) / k)) / 5) * 5
+      } else {
+        return Math.round(max / (1 + ((reps - 1) / k)) * 100) / 100
+      }
+    }
+  }
+})
+</script>
+<hr/>
+<div id="app-3" class="demo">
+  <p>Reps算出用</p>
+  <p>標準：(MaxWeight / 使用Weight - 1) * 21 + 1 = Reps
+  </p>
+  <p>({{max}} / {{weight}} - 1) * {{k}} + 1 =</p>
+  <p>{{Math.round(((max / weight - 1) * k + 1) * 100) / 100}} ≒
+  {{myRound(max, weight, k, round)}}
+  <!--
+  -->
+  </p>
+  max: <input v-model="max">
+  weight: <input v-model="weight">
+  k: <input v-model="k">
+  <select v-model="round">
+    <option>none</option>
+    <option>round</option>
+    <option>roundUp</option>
+    <option>roundDown</option>
+  </select>
+  <p>
+    <button @click="persist">Save</button>
+  </p>
+</div>
+<script>
+var app3 = new Vue({
+  el: '#app-3',
+  data: {
+    max: '80',
+    weight: '60',
+    k: '21',
+    round: 'none',
+  },
+  mounted() {
+    if (localStorage.max3) {
+      this.max = localStorage.max3;
+    }
+    if (localStorage.weight3) {
+      this.weight = localStorage.weight3;
+    }
+    if (localStorage.k3) {
+      this.k = localStorage.k3;
+    }
+    if (localStorage.round3) {
+      this.round = localStorage.round3;
+    }
+  },
+  methods: {
+    persist() {
+      localStorage.max3 = this.max;
+      localStorage.weight3 = this.weight;
+      localStorage.k3 = this.k;
+      localStorage.round3 = this.round;
+    },
+    myRound(max, weight, k, round) {
+      if (round == "round") {
+        return Math.round((max / weight - 1) * k + 1);
+      } else if (round == "roundUp") {
+        return Math.ceil((max / weight - 1) * k + 1);
+      } else if (round == "roundDown") {
+        return Math.floor((max / weight - 1) * k + 1);
+      } else {
+        return Math.round(((max / weight - 1) * k + 1) * 100) / 100;
+      }
     }
   }
 })
