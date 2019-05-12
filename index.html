@@ -1,7 +1,7 @@
 <html lang="ja">
 <head>
   <meta http-equiv="content-type" charset="utf-8">
-  <title>5/3/1 program calclator</title>
+  <title>5/3/1 Program Calclator</title>
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <style type="text/css">
 table {
@@ -35,6 +35,11 @@ tbody tr td {
       max: <input v-model="cycle.max">
       tm: <input v-model="cycle.tm">
       <!--round: <input v-model="cycle.round">-->
+      <select v-model="cycle.version">
+        <option>Original</option>
+        <option>Shibuya Original</option>
+        <option>Tocci Original</option>
+      </select>
       <select v-model="cycle.round">
         <option>none</option>
         <option>2.5 round</option>
@@ -82,17 +87,29 @@ tbody tr td {
           <td>{{myRound(cycle.tm, 0.95, cycle.round)}}</td> <td>1+</td>
           <td>{{myRound(cycle.tm, 0.60, cycle.round)}}</td> <td>5</td>
         </tr>
-        <tr>
+        <tr v-if="cycle.version == 'Shibuya Original'">
           <td>Set 4</td>
           <td>{{myRound(cycle.tm, 0.75, cycle.round)}}</td> <td>5</td>
           <td>{{myRound(cycle.tm, 0.80, cycle.round)}}</td> <td>3</td>
           <td>{{myRound(cycle.tm, 0.85, cycle.round)}}</td> <td>3</td>
         </tr>
-        <tr>
+        <tr v-else-if="cycle.version == 'Tocci Original'">
+          <td>Set 4</td>
+          <td>{{myRound(cycle.tm, 0.65, cycle.round)}}</td> <td>5+</td>
+          <td>{{myRound(cycle.tm, 0.70, cycle.round)}}</td> <td>3+</td>
+          <td>{{myRound(cycle.tm, 0.75, cycle.round)}}</td> <td>5+</td>
+        </tr>
+        <tr v-if="cycle.version == 'Shibuya Original'">
           <td>Set 5</td>
           <td>{{myRound(cycle.tm, 0.65, cycle.round)}}</td> <td>5+</td>
           <td>{{myRound(cycle.tm, 0.70, cycle.round)}}</td> <td>3+</td>
           <td>{{myRound(cycle.tm, 0.75, cycle.round)}}</td> <td>5+</td>
+        </tr>
+        <tr v-else-if="cycle.version == 'Tocci Original'">
+          <td>Set 5</td>
+          <td>{{myRound(cycle.tm, 0.50, cycle.round)}}</td> <td>10+</td>
+          <td>{{myRound(cycle.tm, 0.50, cycle.round)}}</td> <td>10+</td>
+          <td>{{myRound(cycle.tm, 0.50, cycle.round)}}</td> <td>10+</td>
         </tr>
       </table>
     </div>
@@ -100,6 +117,11 @@ tbody tr td {
 
   <p>
     max: <input v-model="newMax">
+    <select v-model="newVersion">
+      <option>Original</option>
+      <option>Shibuya Original</option>
+      <option>Tocci Original</option>
+    </select>
     <select v-model="newRound">
       <option>none</option>
       <option>2.5 round</option>
@@ -113,6 +135,7 @@ tbody tr td {
   </p>
   <p>
     <button @click="save">Save To Brouser</button>
+    <button @click="clear">Clear Brouser Data</button>
   </p>
 </div>
 <script>
@@ -123,11 +146,13 @@ const app = new Vue({
       {
         max: 80,
         tm: 72,
-        round: "none"
+        round: "2.5 round",
+        version: "Tocci Original"
       }
     ],
     newMax: 80,
-    newRound: "2.5 round"
+    newRound: "2.5 round",
+    newVersion: "Tocci Original"
   },
   mounted() {
     if (localStorage.getItem('cycles')) {
@@ -160,6 +185,9 @@ const app = new Vue({
     save() {
       const parsed = JSON.stringify(this.cycles);
       localStorage.setItem('cycles', parsed);
+    },
+    clear() {
+      localStorage.removeItem('cycles');
     },
     myRound(tm, k, round) {
       if (round == "2.5 round") {
