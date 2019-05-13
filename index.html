@@ -34,7 +34,6 @@ tbody tr td {
       <b>Cycle: {{n + 1}}</b>
       max: <input v-model="cycle.max">
       tm: <input v-model="cycle.tm">
-      <!--round: <input v-model="cycle.round">-->
       <select v-model="cycle.version">
         <option>Original</option>
         <option>Shibuya Original</option>
@@ -55,61 +54,61 @@ tbody tr td {
       <table class="cycle">
         <tr>
           <th rowspan="2"></th>
-          <th colspan="2">Period 1 / 5-day</th>
-          <th colspan="2">Period 2 / 3-day</th>
-          <th colspan="2">Period 3 / 1-day</th>
-          <th colspan="2">Period 4 / Deload</th>
+          <th colspan="3">Period 1 / 5-day</th>
+          <th colspan="3">Period 2 / 3-day</th>
+          <th colspan="3">Period 3 / 1-day</th>
+          <th colspan="3">Period 4 / Deload</th>
         </tr>
         <tr>
-          <th>weight</th> <th>reps</th>
-          <th>weight</th> <th>reps</th>
-          <th>weight</th> <th>reps</th>
-          <th>weight</th> <th>reps</th>
+          <th>%</th><th>weight</th><th>reps</th>
+          <th>%</th><th>weight</th><th>reps</th>
+          <th>%</th><th>weight</th><th>reps</th>
+          <th>%</th><th>weight</th><th>reps</th>
         </tr>
         <tr>
           <td>Set 1</td>
-          <td>{{myRound(cycle.tm, 0.65, cycle.round)}}</td> <td>5</td>
-          <td>{{myRound(cycle.tm, 0.70, cycle.round)}}</td> <td>3</td>
-          <td>{{myRound(cycle.tm, 0.75, cycle.round)}}</td> <td>5</td>
-          <td>{{myRound(cycle.tm, 0.40, cycle.round)}}</td> <td>5</td>
+          <td>65%</td><td>{{myRound(cycle.tm, 0.65, cycle.round)}}</td> <td>5</td>
+          <td>70%</td><td>{{myRound(cycle.tm, 0.70, cycle.round)}}</td> <td>3</td>
+          <td>75%</td><td>{{myRound(cycle.tm, 0.75, cycle.round)}}</td> <td>5</td>
+          <td>40%</td><td>{{myRound(cycle.tm, 0.40, cycle.round)}}</td> <td>5</td>
         </tr>
         <tr>
           <td>Set 2</td>
-          <td>{{myRound(cycle.tm, 0.75, cycle.round)}}</td> <td>5</td>
-          <td>{{myRound(cycle.tm, 0.80, cycle.round)}}</td> <td>3</td>
-          <td>{{myRound(cycle.tm, 0.85, cycle.round)}}</td> <td>3</td>
-          <td>{{myRound(cycle.tm, 0.50, cycle.round)}}</td> <td>5</td>
+          <td>75%</td><td>{{myRound(cycle.tm, 0.80, cycle.round)}}</td> <td>5</td>
+          <td>80%</td><td>{{myRound(cycle.tm, 0.80, cycle.round)}}</td> <td>3</td>
+          <td>85%</td><td>{{myRound(cycle.tm, 0.85, cycle.round)}}</td> <td>3</td>
+          <td>50%</td><td>{{myRound(cycle.tm, 0.50, cycle.round)}}</td> <td>5</td>
         </tr>
         <tr>
           <td>Set 3</td>
-          <td>{{myRound(cycle.tm, 0.85, cycle.round)}}</td> <td>5+</td>
-          <td>{{myRound(cycle.tm, 0.90, cycle.round)}}</td> <td>3+</td>
-          <td>{{myRound(cycle.tm, 0.95, cycle.round)}}</td> <td>1+</td>
-          <td>{{myRound(cycle.tm, 0.60, cycle.round)}}</td> <td>5</td>
+          <td>85%</td><td>{{myRound(cycle.tm, 0.85, cycle.round)}}</td> <td>5+</td>
+          <td>90%</td><td>{{myRound(cycle.tm, 0.90, cycle.round)}}</td> <td>3+</td>
+          <td>95%</td><td>{{myRound(cycle.tm, 0.95, cycle.round)}}</td> <td>1+</td>
+          <td>60%</td><td>{{myRound(cycle.tm, 0.60, cycle.round)}}</td> <td>5</td>
         </tr>
         <tr v-if="cycle.version == 'Shibuya Original'">
           <td>Set 4</td>
-          <td>{{myRound(cycle.tm, 0.75, cycle.round)}}</td> <td>5</td>
-          <td>{{myRound(cycle.tm, 0.80, cycle.round)}}</td> <td>3</td>
-          <td>{{myRound(cycle.tm, 0.85, cycle.round)}}</td> <td>3</td>
+          <td>75%</td><td>{{myRound(cycle.tm, 0.75, cycle.round)}}</td> <td>5</td>
+          <td>80%</td><td>{{myRound(cycle.tm, 0.80, cycle.round)}}</td> <td>3</td>
+          <td>85%</td><td>{{myRound(cycle.tm, 0.85, cycle.round)}}</td> <td>3</td>
         </tr>
         <tr v-else-if="cycle.version == 'Tocci Original'">
           <td>Set 4</td>
-          <td>{{myRound(cycle.tm, 0.65, cycle.round)}}</td> <td>5+</td>
-          <td>{{myRound(cycle.tm, 0.70, cycle.round)}}</td> <td>3+</td>
-          <td>{{myRound(cycle.tm, 0.75, cycle.round)}}</td> <td>5+</td>
+          <td>65%</td><td>{{myRound(cycle.tm, 0.65, cycle.round)}}</td> <td>5+</td>
+          <td>70%</td><td>{{myRound(cycle.tm, 0.70, cycle.round)}}</td> <td>3+</td>
+          <td>75%</td><td>{{myRound(cycle.tm, 0.75, cycle.round)}}</td> <td>5+</td>
         </tr>
         <tr v-if="cycle.version == 'Shibuya Original'">
           <td>Set 5</td>
-          <td>{{myRound(cycle.tm, 0.65, cycle.round)}}</td> <td>5+</td>
-          <td>{{myRound(cycle.tm, 0.70, cycle.round)}}</td> <td>3+</td>
-          <td>{{myRound(cycle.tm, 0.75, cycle.round)}}</td> <td>5+</td>
+          <td>65%</td><td>{{myRound(cycle.tm, 0.65, cycle.round)}}</td> <td>5+</td>
+          <td>70%</td><td>{{myRound(cycle.tm, 0.70, cycle.round)}}</td> <td>3+</td>
+          <td>75%</td><td>{{myRound(cycle.tm, 0.75, cycle.round)}}</td> <td>5+</td>
         </tr>
         <tr v-else-if="cycle.version == 'Tocci Original'">
           <td>Set 5</td>
-          <td>{{myRound(cycle.tm, 0.50, cycle.round)}}</td> <td>10+</td>
-          <td>{{myRound(cycle.tm, 0.50, cycle.round)}}</td> <td>10+</td>
-          <td>{{myRound(cycle.tm, 0.50, cycle.round)}}</td> <td>10+</td>
+          <td>55%</td><td>{{myRound(cycle.tm, 0.55, cycle.round)}}</td> <td>10+</td>
+          <td>55%</td><td>{{myRound(cycle.tm, 0.55, cycle.round)}}</td> <td>10+</td>
+          <td>55%</td><td>{{myRound(cycle.tm, 0.55, cycle.round)}}</td> <td>10+</td>
         </tr>
       </table>
     </div>
@@ -170,12 +169,7 @@ const app = new Vue({
         return;
       }
 
-      if (this.round) {
-        this.cycles.push({max: this.newMax, tm: this.newMax * 0.9, round: this.newRound});
-      } else {
-        this.cycles.push({max: this.newMax, tm: this.newMax * 0.9, round: this.newRound});
-      }
-      //this.newMax = '';
+      this.cycles.push({max: this.newMax, tm: this.newMax * 0.9, round: this.newRound, version: this.newVersion});
       this.save();
     },
     removeCycle(x) {
