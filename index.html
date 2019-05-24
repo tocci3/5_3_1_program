@@ -25,11 +25,14 @@ tbody tr td {
   border: 1px solid #ccc;
   text-align: right;
 }
+[v-cloak] {
+  display: none;
+}
 </style>
 </head>
 <div id="app">
   <h2>5/3/1 Program Calculator</h2>
-  <div v-for="(cycle, n) in cycles">
+  <div v-for="(cycle, n) in cycles" v-cloak>
     <p>
       <b>Cycle: {{n + 1}}</b>
       max: <input size=8 v-model="cycle.max">
@@ -91,7 +94,7 @@ tbody tr td {
         <tr v-if="cycle.version == '10/5/1/15 Tocci Original'">
           <td>Set 2</td>
           <td>60%</td><td>{{myRound(cycle.tm, 0.60, cycle.round)}}</td> <td>10</td>
-          <td>70%</td><td>{{myRound(cycle.tm, 0.70, cycle.round)}}</td> <td>5</td>
+          <td>72%</td><td>{{myRound(cycle.tm, 0.72, cycle.round)}}</td> <td>5</td>
           <td>85%</td><td>{{myRound(cycle.tm, 0.85, cycle.round)}}</td> <td>3</td>
           <td>57%</td><td>{{myRound(cycle.tm, 0.57, cycle.round)}}</td> <td>15+</td>
         </tr>
@@ -132,7 +135,7 @@ tbody tr td {
         <tr v-else-if="cycle.version == '10/5/1/15 Tocci Original'">
           <td>Set 4</td>
           <td>55%</td><td>{{myRound(cycle.tm, 0.55, cycle.round)}}</td> <td>10+</td>
-          <td>60%</td><td>{{myRound(cycle.tm, 0.60, cycle.round)}}</td> <td>5+</td>
+          <td>65%</td><td>{{myRound(cycle.tm, 0.65, cycle.round)}}</td> <td>5+</td>
           <td>75%</td><td>{{myRound(cycle.tm, 0.75, cycle.round)}}</td> <td>5+</td>
         </tr>
         <tr v-else-if="cycle.version != 'Original'">
