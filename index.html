@@ -45,6 +45,7 @@ tbody tr td {
         <option>Tocci Original</option>
         <option>Tocci Original Old</option>
         <option>10/5/1/15 Tocci Original</option>
+        <option>20/10/1/30 Tocci Original</option>
       </select>
       <select v-model="cycle.round">
         <option>none</option>
@@ -63,6 +64,13 @@ tbody tr td {
           <th rowspan="2"></th>
           <th colspan="3">Period 1 / 10-day</th>
           <th colspan="3">Period 2 / 5-day</th>
+          <th colspan="3">Period 3 / 1-day</th>
+          <th colspan="3">Period 4 / Deload</th>
+        </tr>
+        <tr v-else-if="cycle.version == '20/10/1/30 Tocci Original'">
+          <th rowspan="2"></th>
+          <th colspan="3">Period 1 / 20-day</th>
+          <th colspan="3">Period 2 / 10-day</th>
           <th colspan="3">Period 3 / 1-day</th>
           <th colspan="3">Period 4 / Deload</th>
         </tr>
@@ -86,6 +94,13 @@ tbody tr td {
           <td>75%</td><td>{{myRound(cycle.tm, 0.75, cycle.round)}}</td> <td>5</td>
           <td>50%</td><td>{{myRound(cycle.tm, 0.50, cycle.round)}}</td> <td>10</td>
         </tr>
+        <tr v-else-if="cycle.version == '20/10/1/30 Tocci Original'">
+          <td>Set 1</td>
+          <td>45%</td><td>{{myRound(cycle.tm, 0.45, cycle.round)}}</td> <td>3</td>
+          <td>55%</td><td>{{myRound(cycle.tm, 0.55, cycle.round)}}</td> <td>3</td>
+          <td>65%</td><td>{{myRound(cycle.tm, 0.65, cycle.round)}}</td> <td>3</td>
+          <td>40%</td><td>{{myRound(cycle.tm, 0.40, cycle.round)}}</td> <td>3</td>
+        </tr>
         <tr v-else>
           <td>Set 1</td>
           <td>65%</td><td>{{myRound(cycle.tm, 0.65, cycle.round)}}</td> <td>5</td>
@@ -100,6 +115,13 @@ tbody tr td {
           <td>85%</td><td>{{myRound(cycle.tm, 0.85, cycle.round)}}</td> <td>3</td>
           <td>57%</td><td>{{myRound(cycle.tm, 0.57, cycle.round)}}</td> <td>15+</td>
         </tr>
+        <tr v-else-if="cycle.version == '20/10/1/30 Tocci Original'">
+          <td>Set 2</td>
+          <td>92%</td><td>{{myRound(cycle.tm, 0.92, cycle.round)}}</td> <td>20+</td>
+          <td>96%</td><td>{{myRound(cycle.tm, 0.96, cycle.round)}}</td> <td>10+</td>
+          <td>100%</td><td>{{myRound(cycle.tm, 1.00, cycle.round)}}</td> <td>1+</td>
+          <td>67%</td><td>{{myRound(cycle.tm, 0.67, cycle.round)}}</td> <td>30+</td>
+        </tr>
         <tr v-else>
           <td>Set 2</td>
           <td>75%</td><td>{{myRound(cycle.tm, 0.80, cycle.round)}}</td> <td>5</td>
@@ -113,6 +135,13 @@ tbody tr td {
           <td>79%</td><td>{{myRound(cycle.tm, 0.79, cycle.round)}}</td> <td>5+</td>
           <td>95%</td><td>{{myRound(cycle.tm, 0.95, cycle.round)}}</td> <td>1+</td>
           <td>50%</td><td>{{myRound(cycle.tm, 0.50, cycle.round)}}</td> <td>15+</td>
+        </tr>
+        <tr v-else-if="cycle.version == '20/10/1/30 Tocci Original'">
+          <td>Set 3</td>
+          <td>75%</td><td>{{myRound(cycle.tm, 0.75, cycle.round)}}</td> <td>20+</td>
+          <td>80%</td><td>{{myRound(cycle.tm, 0.80, cycle.round)}}</td> <td>10+</td>
+          <td>85%</td><td>{{myRound(cycle.tm, 0.85, cycle.round)}}</td> <td>10+</td>
+          <td>55%</td><td>{{myRound(cycle.tm, 0.55, cycle.round)}}</td> <td>30+</td>
         </tr>
         <tr v-else-if="cycle.version == 'Tocci Original'">
           <td>Set 3</td>
@@ -140,7 +169,7 @@ tbody tr td {
           <td>65%</td><td>{{myRound(cycle.tm, 0.65, cycle.round)}}</td> <td>5+</td>
           <td>75%</td><td>{{myRound(cycle.tm, 0.75, cycle.round)}}</td> <td>5+</td>
         </tr>
-        <tr v-else-if="cycle.version != 'Original'">
+        <tr v-else-if="cycle.version != 'Original' && cycle.version != '20/10/1/30 Tocci Original'">
           <td>Set 4</td>
           <td>65%</td><td>{{myRound(cycle.tm, 0.65, cycle.round)}}</td> <td>5+</td>
           <td>70%</td><td>{{myRound(cycle.tm, 0.70, cycle.round)}}</td> <td>3+</td>
@@ -158,7 +187,7 @@ tbody tr td {
           <td>55%</td><td>{{myRound(cycle.tm, 0.55, cycle.round)}}</td> <td>10+</td>
           <td>55%</td><td>{{myRound(cycle.tm, 0.55, cycle.round)}}</td> <td>10+</td>
         </tr>
-        <tr v-else-if="cycle.version != 'Original'">
+        <tr v-else-if="cycle.version != 'Original' && cycle.version != '20/10/1/30 Tocci Original'">
           <td>Set 5</td>
           <td>55%</td><td>{{myRound(cycle.tm, 0.55, cycle.round)}}</td> <td>10+</td>
           <td>55%</td><td>{{myRound(cycle.tm, 0.55, cycle.round)}}</td> <td>10+</td>
@@ -176,6 +205,7 @@ tbody tr td {
       <option>Tocci Original</option>
       <option>Tocci Original Old</option>
       <option>10/5/1/15 Tocci Original</option>
+      <option>20/10/1/30 Tocci Original</option>
     </select>
     <select v-model="newRound">
       <option>none</option>
@@ -189,7 +219,6 @@ tbody tr td {
     <button @click="addCycle">Add Cycle</button>
   </p>
   <p>
-    <button @click="save">Save To Brouser</button>
     <button @click="clear">Clear Brouser Data</button>
   </p>
 </div>
@@ -199,15 +228,15 @@ const app = new Vue({
   data: {
     cycles: [
       {
-        max: 80,
-        tm: 72,
-        round: "2.5 round",
-        version: "Tocci Original"
+        max: 75,
+        tm: 71.25,
+        round: "5 round",
+        version: "20/10/1/30 Tocci Original"
       }
     ],
     newMax: 80,
-    newRound: "2.5 round",
-    newVersion: "10/5/1/15 Tocci Original"
+    newRound: "5 round",
+    newVersion: "20/10/1/30 Tocci Original"
   },
   mounted() {
     if (localStorage.getItem('cycles')) {
@@ -218,15 +247,32 @@ const app = new Vue({
       }
     }
   },
+  watch: {
+    // `cycles` データを監視し、変更があったら自動的に保存
+    cycles: {
+      handler() {
+        this.save();
+      },
+      deep: true // ネストされたオブジェクトの変更も監視
+    }
+  },
   methods: {
     addCycle() {
-      // 実際に何かしたことを入力する
       if (!this.newMax) {
         return;
       }
 
-      this.cycles.push({max: this.newMax, tm: this.newMax * 0.9, round: this.newRound, version: this.newVersion});
-      this.save();
+      let trainingMax = this.newMax * 0.9; // デフォルトは90%
+      if (this.newVersion === "20/10/1/30 Tocci Original") {
+        trainingMax = this.newMax * 0.95; // 20/10/1/30 Tocci Originalの場合は95%
+      }
+
+      this.cycles.push({
+        max: this.newMax,
+        tm: trainingMax,
+        round: this.newRound,
+        version: this.newVersion
+      });
     },
     removeCycle(x) {
       this.cycles.splice(x, 1);
