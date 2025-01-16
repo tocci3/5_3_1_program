@@ -1,8 +1,9 @@
+<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta http-equiv="content-type" charset="utf-8">
   <title>5/3/1 Program Calclator</title>
-  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
 <style type="text/css">
 table {
   width: 100%;
@@ -30,6 +31,7 @@ tbody tr td {
 }
 </style>
 </head>
+<body>
 <div id="app">
   <h2>5/3/1 Program Calculator</h2>
   <div v-for="(cycle, n) in cycles" v-cloak>
@@ -257,4 +259,5 @@ const app = new Vue({
   }
 })
 </script>
+</body>
 </html>
