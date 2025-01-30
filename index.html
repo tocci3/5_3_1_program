@@ -89,10 +89,10 @@ tbody tr td {
         </tr>
         <tr v-if="cycle.version == '10/5/1/15 Tocci Original'">
           <td>Set 1</td>
-          <td>55%</td><td>{{myRound(cycle.tm, 0.55, cycle.round)}}</td> <td>10</td>
-          <td>65%</td><td>{{myRound(cycle.tm, 0.65, cycle.round)}}</td> <td>5</td>
-          <td>75%</td><td>{{myRound(cycle.tm, 0.75, cycle.round)}}</td> <td>5</td>
-          <td>50%</td><td>{{myRound(cycle.tm, 0.50, cycle.round)}}</td> <td>10</td>
+          <td>55%</td><td>{{myRound(cycle.tm, 0.55, cycle.round)}}</td> <td>3</td>
+          <td>65%</td><td>{{myRound(cycle.tm, 0.65, cycle.round)}}</td> <td>3</td>
+          <td>75%</td><td>{{myRound(cycle.tm, 0.75, cycle.round)}}</td> <td>3</td>
+          <td>50%</td><td>{{myRound(cycle.tm, 0.50, cycle.round)}}</td> <td>3</td>
         </tr>
         <tr v-else-if="cycle.version == '20/10/1/30 Tocci Original'">
           <td>Set 1</td>
@@ -110,10 +110,10 @@ tbody tr td {
         </tr>
         <tr v-if="cycle.version == '10/5/1/15 Tocci Original'">
           <td>Set 2</td>
-          <td>60%</td><td>{{myRound(cycle.tm, 0.60, cycle.round)}}</td> <td>10</td>
-          <td>72%</td><td>{{myRound(cycle.tm, 0.72, cycle.round)}}</td> <td>5</td>
-          <td>85%</td><td>{{myRound(cycle.tm, 0.85, cycle.round)}}</td> <td>3</td>
-          <td>57%</td><td>{{myRound(cycle.tm, 0.57, cycle.round)}}</td> <td>15+</td>
+          <td>94%</td><td>{{myRound(cycle.tm, 0.94, cycle.round)}}</td> <td>10+</td>
+          <td>97%</td><td>{{myRound(cycle.tm, 0.97, cycle.round)}}</td> <td>5+</td>
+          <td>100%</td><td>{{myRound(cycle.tm, 1.00, cycle.round)}}</td> <td>1+</td>
+          <td>75%</td><td>{{myRound(cycle.tm, 0.75, cycle.round)}}</td> <td>15+</td>
         </tr>
         <tr v-else-if="cycle.version == '20/10/1/30 Tocci Original'">
           <td>Set 2</td>
@@ -131,17 +131,17 @@ tbody tr td {
         </tr>
         <tr v-if="cycle.version == '10/5/1/15 Tocci Original'">
           <td>Set 3</td>
-          <td>65%</td><td>{{myRound(cycle.tm, 0.65, cycle.round)}}</td> <td>10+</td>
-          <td>79%</td><td>{{myRound(cycle.tm, 0.79, cycle.round)}}</td> <td>5+</td>
-          <td>95%</td><td>{{myRound(cycle.tm, 0.95, cycle.round)}}</td> <td>1+</td>
-          <td>50%</td><td>{{myRound(cycle.tm, 0.50, cycle.round)}}</td> <td>15+</td>
+          <td>80%</td><td>{{myRound(cycle.tm, 0.80, cycle.round)}}</td> <td>10+</td>
+          <td>83%</td><td>{{myRound(cycle.tm, 0.83, cycle.round)}}</td> <td>5+</td>
+          <td>86%</td><td>{{myRound(cycle.tm, 0.86, cycle.round)}}</td> <td>5+</td>
+          <td>64%</td><td>{{myRound(cycle.tm, 0.64, cycle.round)}}</td> <td>15+</td>
         </tr>
         <tr v-else-if="cycle.version == '20/10/1/30 Tocci Original'">
           <td>Set 3</td>
-          <td>75%</td><td>{{myRound(cycle.tm, 0.75, cycle.round)}}</td> <td>20+</td>
-          <td>80%</td><td>{{myRound(cycle.tm, 0.80, cycle.round)}}</td> <td>10+</td>
+          <td>76%</td><td>{{myRound(cycle.tm, 0.76, cycle.round)}}</td> <td>20+</td>
+          <td>81%</td><td>{{myRound(cycle.tm, 0.81, cycle.round)}}</td> <td>10+</td>
           <td>85%</td><td>{{myRound(cycle.tm, 0.85, cycle.round)}}</td> <td>10+</td>
-          <td>55%</td><td>{{myRound(cycle.tm, 0.55, cycle.round)}}</td> <td>30+</td>
+          <td>52%</td><td>{{myRound(cycle.tm, 0.52, cycle.round)}}</td> <td>30+</td>
         </tr>
         <tr v-else-if="cycle.version == 'Tocci Original'">
           <td>Set 3</td>
@@ -163,13 +163,7 @@ tbody tr td {
           <td>80%</td><td>{{myRound(cycle.tm, 0.80, cycle.round)}}</td> <td>3</td>
           <td>85%</td><td>{{myRound(cycle.tm, 0.85, cycle.round)}}</td> <td>3</td>
         </tr>
-        <tr v-else-if="cycle.version == '10/5/1/15 Tocci Original'">
-          <td>Set 4</td>
-          <td>55%</td><td>{{myRound(cycle.tm, 0.55, cycle.round)}}</td> <td>10+</td>
-          <td>65%</td><td>{{myRound(cycle.tm, 0.65, cycle.round)}}</td> <td>5+</td>
-          <td>75%</td><td>{{myRound(cycle.tm, 0.75, cycle.round)}}</td> <td>5+</td>
-        </tr>
-        <tr v-else-if="cycle.version != 'Original' && cycle.version != '20/10/1/30 Tocci Original'">
+        <tr v-else-if="cycle.version != 'Original' && cycle.version != '20/10/1/30 Tocci Original' && cycle.version != '10/5/1/15 Tocci Original'">
           <td>Set 4</td>
           <td>65%</td><td>{{myRound(cycle.tm, 0.65, cycle.round)}}</td> <td>5+</td>
           <td>70%</td><td>{{myRound(cycle.tm, 0.70, cycle.round)}}</td> <td>3+</td>
@@ -181,13 +175,7 @@ tbody tr td {
           <td>70%</td><td>{{myRound(cycle.tm, 0.70, cycle.round)}}</td> <td>3+</td>
           <td>75%</td><td>{{myRound(cycle.tm, 0.75, cycle.round)}}</td> <td>5+</td>
         </tr>
-        <tr v-else-if="cycle.version == '10/5/1/15 Tocci Original'">
-          <td>Set 5</td>
-          <td>50%</td><td>{{myRound(cycle.tm, 0.50, cycle.round)}}</td> <td>10+</td>
-          <td>55%</td><td>{{myRound(cycle.tm, 0.55, cycle.round)}}</td> <td>10+</td>
-          <td>55%</td><td>{{myRound(cycle.tm, 0.55, cycle.round)}}</td> <td>10+</td>
-        </tr>
-        <tr v-else-if="cycle.version != 'Original' && cycle.version != '20/10/1/30 Tocci Original'">
+        <tr v-else-if="cycle.version != 'Original' && cycle.version != '20/10/1/30 Tocci Original' && cycle.version != '10/5/1/15 Tocci Original'">
           <td>Set 5</td>
           <td>55%</td><td>{{myRound(cycle.tm, 0.55, cycle.round)}}</td> <td>10+</td>
           <td>55%</td><td>{{myRound(cycle.tm, 0.55, cycle.round)}}</td> <td>10+</td>
@@ -265,8 +253,8 @@ const app = new Vue({
       }
 
       let trainingMax = this.newMax * 0.9; // デフォルトは90%
-      if (this.newVersion === "20/10/1/30 Tocci Original") {
-        trainingMax = this.newMax * 0.95; // 20/10/1/30 Tocci Originalの場合は95%
+      if (this.newVersion === "20/10/1/30 Tocci Original" || this.newVersion === "10/5/1/15 Tocci Original") {
+        trainingMax = this.newMax * 0.95;
       }
 
       this.cycles.push({
